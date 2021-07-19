@@ -1,0 +1,24 @@
+{
+  "name": "mysoftwareengineeringteam",
+  "version": "1.0.0",
+  "description": "This is an HTML generated webpage that takes in employee information and returns a web page. I will add more to this as I go.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Erik-jpg/MySoftwareEngineeringTeam.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Erik-jpg/MySoftwareEngineeringTeam/issues"
+  },
+  "homepage": "https://github.com/Erik-jpg/MySoftwareEngineeringTeam#readme",
+  "dependencies": {
+    "inquirer": "^8.1.2",
+    "jest": "^27.0.6"
+  }
+}
