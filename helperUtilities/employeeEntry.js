@@ -1,9 +1,9 @@
 const inquirer = require('inquirer');
-const {htmlGenerator} = require('./htmlGenerator');
+const {htmlGenerator} = require('./htmlCreator');
 
-let manager = [];
-let engineer = [];
-let intern = [];
+let managerData = [];
+let engineerData = [];
+let internData = [];
 
 class Employee{
     constructor(name, email, id, role) {
@@ -45,6 +45,16 @@ class intern extends Employee {
     getSchool() { return this.school; }
 }
 
+function nextStep() {
+    return inquirer.prompt([
+        {name: 'buildRoster',
+         message: 'Would you like to add an engineer, inturn or end application?',
+        type: 'list',
+    choices: ["add engineer", "add inturn", "end application"]},
+    ])
+}
+
+
 function inputForEmployee () {
     return inquirer.prompt([
         {name: 'role',
@@ -82,7 +92,7 @@ function engineerInput () {
 function internInput () {
     return inquirer.prompt([
         {name: 'school',
-        message: "Where did this Intern graduate?",
+        message: "Where school did this Intern graduate from?",
         type: 'input'}
     ])
 }
@@ -90,7 +100,44 @@ function internInput () {
 async function employeeEntry() {
     let employeeInput = await inputForEmployee();
     let employee = new employee(employeeInput.name, employeeInput.email, employeeInput.id, 'employee')
+    
     if(employeeInput.role === 'manager'){
-        let 
+        let managerSubmission = await managerInput();
+        let manager = new manager(employeeInput.name, employeeInput.email, employeeInput.id, employeeInput.role, managerSubmission.officeNumber);
+        manager.push(manager);
+    }
+    else if(employeeInput.role === 'engineer'){
+        let engineSubmission = await engineerInput();
+        let engineer = new engineer(employeeInput.name, employeeInput.email, employeeInput.id, employeeInput.role, engineSubmission.github);
+        engineer.push(engineer);
+    }
+    else if(employeeInput.role === 'intern'){
+        let internSubmission = await internInput();
+        let intern = new intern(employeeInput.name, employeeInput.email, employeeInput.id, employeeInput.role, internSubmission.school);
+        intern.push(intern);
+    }
+
+    let teamInput = await nextStep();
+    if(teamInput.nextStep === 'add engineer'){
+        await engineInput();
+    }
+    else if(teamInput.nextStep === 'add inturn'){
+        await internInput();
+    }
+    else {
+        htmlCreator (managerData, engineerData, internData);
     }
 }
+
+module.exports ={
+    employeeEntry,
+    inputForEmployee,
+    managerInput,
+    engineerInput,
+    internInput,
+    managerData,
+    engineerData,
+    internData
+
+}
+
