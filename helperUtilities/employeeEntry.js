@@ -18,7 +18,7 @@ class Employee{
     getRole() { return this.role; }
 }
 
-class manager extends Employee {
+class Manager extends Employee {
     constructor(name, email, id, role, officeNumber) {
         super(name, email, id, role);
         this.officeNumber = officeNumber;
@@ -36,7 +36,7 @@ class Engineer extends Employee {
     getgithub() { return this.github; }
 }
 
-class intern extends Employee {
+class Intern extends Employee {
     constructor (name, email, id, role, school){
         super(name, email, id, role);
         this.school = school;
@@ -99,19 +99,19 @@ function internInput () {
 
 async function employeeEntry() {
     let employeeInput = await inputForEmployee();
-    let employee = new employee(employeeInput.name, employeeInput.email, employeeInput.id, 'employee')
+    let employee = new employee(employeeInput.name, employeeInput.email, employeeInput.id, 'Employee')
     
-    if(employeeInput.role === 'manager'){
+    if(employeeInput.role === 'Manager'){
         let managerSubmission = await managerInput();
         let manager = new manager(employeeInput.name, employeeInput.email, employeeInput.id, employeeInput.role, managerSubmission.officeNumber);
         manager.push(manager);
     }
-    else if(employeeInput.role === 'engineer'){
+    else if(employeeInput.role === 'Engineer'){
         let engineSubmission = await engineerInput();
         let engineer = new engineer(employeeInput.name, employeeInput.email, employeeInput.id, employeeInput.role, engineSubmission.github);
         engineer.push(engineer);
     }
-    else if(employeeInput.role === 'intern'){
+    else if(employeeInput.role === 'Intern'){
         let internSubmission = await internInput();
         let intern = new intern(employeeInput.name, employeeInput.email, employeeInput.id, employeeInput.role, internSubmission.school);
         intern.push(intern);
