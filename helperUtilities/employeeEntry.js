@@ -121,7 +121,7 @@ async function employeeEntry() {
     if(teamInput.nextStep === 'add engineer'){
         await engineInput();
     }
-    else if(teamInput.nextStep === 'add inturn'){
+    else if(teamInput.nextStep === 'add intern'){
         await internInput();
     }
     else {

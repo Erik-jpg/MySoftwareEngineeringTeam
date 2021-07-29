@@ -1,7 +1,7 @@
 const fs = require ('fs');
 const path = require ('path');
-const { employeeEntry, managerData, engineerData, internData } = require('./helperUtilities/employeeEntry');
-const { createHTML } = require('./helperUtilities/createHTML');
+const { employeeEntry, managerData, engineerData, internData } = require('./helperUtilities/employeeEntry.js');
+const { createHTML } = require('./helperUtilities/htmlCreator.js');
 
 function writeFile (data) {
     fs.writeFile("index.html", data,
