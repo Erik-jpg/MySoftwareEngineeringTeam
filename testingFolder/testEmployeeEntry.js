@@ -1,3 +1,4 @@
+const jest = require('jest');
 const {Employee, manager, engineer, intern} = require('../helperUtilities/employeeEntry');
 const {createManager, createEmployee, createEngineer, createIntern} = require('../helperUtilities/htmlCreator');
 

@@ -1,11 +1,12 @@
 const inquirer = require('inquirer');
-const {htmlGenerator} = require('./htmlCreator');
-
+const createHTML = require('./htmlCreator.js');
+const jest = require('jest');
+const index = require('./index.js');
 let managerData = [];
 let engineerData = [];
 let internData = [];
 
-class Employee{
+class employee{
     constructor(name, email, id, role) {
         this.name = name;
         this.email = email;
@@ -18,7 +19,7 @@ class Employee{
     getRole() { return this.role; }
 }
 
-class Manager extends Employee {
+class manager extends employee {
     constructor(name, email, id, role, officeNumber) {
         super(name, email, id, role);
         this.officeNumber = officeNumber;
@@ -27,7 +28,7 @@ class Manager extends Employee {
     getOfficeNumber() { return this.officeNumber; }
 }
 
-class Engineer extends Employee {
+class engineer extends employee {
     constructor (name, email, id, role, github){
         super(name, email, id, role);
         this.github = github;
@@ -36,7 +37,7 @@ class Engineer extends Employee {
     getgithub() { return this.github; }
 }
 
-class Intern extends Employee {
+class intern extends employee {
     constructor (name, email, id, role, school){
         super(name, email, id, role);
         this.school = school;
@@ -99,19 +100,20 @@ function internInput () {
 
 async function employeeEntry() {
     let employeeInput = await inputForEmployee();
-    let employee = new employee(employeeInput.name, employeeInput.email, employeeInput.id, 'Employee')
+    let employee = new employee(employeeInput.name, employeeInput.email, employeeInput.id, 'employee');
+    // employee.push(Employee)
     
-    if(employeeInput.role === 'Manager'){
+    if(employeeInput.role === 'Manager') {
         let managerSubmission = await managerInput();
-        let manager = new manager(employeeInput.name, employeeInput.email, employeeInput.id, employeeInput.role, managerSubmission.officeNumber);
+        let manager = new Manager(employeeInput.name, employeeInput.email, employeeInput.id, employeeInput.role, managerSubmission.officeNumber);
         manager.push(manager);
     }
-    else if(employeeInput.role === 'Engineer'){
+    else if(employeeInput.role === Engineer){
         let engineSubmission = await engineerInput();
         let engineer = new engineer(employeeInput.name, employeeInput.email, employeeInput.id, employeeInput.role, engineSubmission.github);
         engineer.push(engineer);
     }
-    else if(employeeInput.role === 'Intern'){
+    else if(employeeInput.role === Intern){
         let internSubmission = await internInput();
         let intern = new intern(employeeInput.name, employeeInput.email, employeeInput.id, employeeInput.role, internSubmission.school);
         intern.push(intern);
@@ -119,13 +121,13 @@ async function employeeEntry() {
 
     let teamInput = await nextStep();
     if(teamInput.nextStep === 'add engineer'){
-        await engineInput();
+        await engineerInput();
     }
     else if(teamInput.nextStep === 'add intern'){
         await internInput();
     }
     else {
-        htmlCreator (managerData, engineerData, internData);
+        createHTML(managerData, engineerData, internData);
     }
 }
 
@@ -137,7 +139,7 @@ module.exports ={
     internInput,
     managerData,
     engineerData,
-    internData
-
+    internData,
+    
 }
 
