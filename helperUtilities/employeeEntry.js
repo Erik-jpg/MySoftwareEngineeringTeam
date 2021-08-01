@@ -6,7 +6,7 @@ let managerData = [];
 let engineerData = [];
 let internData = [];
 
-class employee{
+class Employee{
     constructor(name, email, id, role) {
         this.name = name;
         this.email = email;
@@ -19,7 +19,7 @@ class employee{
     getRole() { return this.role; }
 }
 
-class manager extends employee {
+class Manager extends Employee {
     constructor(name, email, id, role, officeNumber) {
         super(name, email, id, role);
         this.officeNumber = officeNumber;
@@ -28,7 +28,7 @@ class manager extends employee {
     getOfficeNumber() { return this.officeNumber; }
 }
 
-class engineer extends employee {
+class Engineer extends Employee {
     constructor (name, email, id, role, github){
         super(name, email, id, role);
         this.github = github;
@@ -37,7 +37,7 @@ class engineer extends employee {
     getgithub() { return this.github; }
 }
 
-class intern extends employee {
+class Intern extends Employee {
     constructor (name, email, id, role, school){
         super(name, email, id, role);
         this.school = school;
@@ -100,22 +100,22 @@ function internInput () {
 
 async function employeeEntry() {
     let employeeInput = await inputForEmployee();
-    let employee = new employee(employeeInput.name, employeeInput.email, employeeInput.id, 'employee');
+    let employee = new Employee(employeeInput.name, employeeInput.email, employeeInput.id, 'employee');
     // employee.push(Employee)
     
     if(employeeInput.role === 'Manager') {
         let managerSubmission = await managerInput();
         let manager = new Manager(employeeInput.name, employeeInput.email, employeeInput.id, employeeInput.role, managerSubmission.officeNumber);
-        manager.push(manager);
+        manager.push(Manager);
     }
     else if(employeeInput.role === Engineer){
         let engineSubmission = await engineerInput();
-        let engineer = new engineer(employeeInput.name, employeeInput.email, employeeInput.id, employeeInput.role, engineSubmission.github);
+        let engineer = new Engineer(employeeInput.name, employeeInput.email, employeeInput.id, employeeInput.role, engineSubmission.github);
         engineer.push(engineer);
     }
     else if(employeeInput.role === Intern){
         let internSubmission = await internInput();
-        let intern = new intern(employeeInput.name, employeeInput.email, employeeInput.id, employeeInput.role, internSubmission.school);
+        let intern = new Intern(employeeInput.name, employeeInput.email, employeeInput.id, employeeInput.role, internSubmission.school);
         intern.push(intern);
     }
 

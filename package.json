@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Erik-jpg/MySoftwareEngineeringTeam#readme",
   "dependencies": {
     "inquirer": "^8.1.2",
-    "jest": "^27.0.6"
+    "jest": "^27.0.6",
+    "node": "^16.6.0"
   }
 }
