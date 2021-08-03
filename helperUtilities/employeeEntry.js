@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const node = require('node');
 const fs = require('fs');
 const path = require('path');
 
@@ -16,6 +17,30 @@ getName() { return `${this.name}`}
 getId() { return `${this.id}`}
 getEmail() { return `${this.email}`}
 getRole() { return `${this.role}`}
+}
+
+class Manager extends Employee {
+    constructor(name, id, email, role, officeNumber) {
+        super(name, id, email, role)
+        this.officeNumber = officeNumber;
+    }
+    getOfficeNumber() { return `${this.officeNumber}`}
+}
+
+class Engineer extends Employee {
+    constructor(name, id, email, role, github) {
+        super(name, id, email, role)
+        this.github= github;
+    }
+    getGithub() { return `${this.github}`}
+}
+
+class Intern extends Employee {
+    constructor(name, id, email, role, school) {
+        super(name, id, email, role)
+        this.school= school;
+    }
+    getSchool() { return `${this.school}`}
 }
 
 const questions = [
@@ -74,7 +99,7 @@ const generateEmployees = () => {
         inquirer.then((answers) => {
             if (answers.role === "Manager") {
                 const manager = new Manger(`${this.name} ${this.id} ${this.email} ${this.role} ${this.officeNumber}`);
-                managerData.push(manager);
+                managerData.push(Manager);
             }
             if (answers.role === "Engineer") {
                 const engineer = new Engineer(`${this.name} ${this.id} ${this.email} ${this.role} ${this.github}`);
@@ -101,9 +126,20 @@ const generateEmployees = () => {
                     console.log('file written');
                 }))
             }
-        }),
+        }
+    })
 
 
 
         generateEmployees();
         console.log('working so far');
+
+        module.export = {
+            managerData,
+            engineerData,
+            internData,
+            Employee,
+            Manager,
+            Engineer,
+            Intern
+        }
