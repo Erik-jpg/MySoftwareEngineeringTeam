@@ -6,6 +6,17 @@ const path = require('path');
 const managerData = [];
 const engineerData = [];
 const internData = [];
+
+class Team {
+    constructor(){
+        manager = [];
+        engineers = [];
+        interns = [];
+    };
+    promptForManager(){
+        
+    }
+}
 class Employee {
     constructor(name, id, email, role) {
         this.name= name;

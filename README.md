@@ -1,2 +1,2 @@
 # MySoftwareEngineeringTeam
-This is an HTML generated webpage that takes in employee information and returns a web page. I will add more to this as I go.
+This is for Homework 10 and using inquirer, express to gather information and then respond with a HTML generated webpage that displays employee information in cards.
