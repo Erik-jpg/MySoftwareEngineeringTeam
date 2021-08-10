@@ -4,7 +4,9 @@
   "description": "This is an HTML generated webpage that takes in employee information and returns a web page. I will add more to this as I go.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "run": "node employeeEntry.js"
   },
   "repository": {
     "type": "git",

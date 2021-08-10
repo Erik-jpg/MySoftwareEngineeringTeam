@@ -14,7 +14,7 @@ class Team {
         interns = [];
     };
     promptForManager(){
-        
+
     }
 }
 class Employee {
@@ -129,14 +129,7 @@ const generateEmployees = () => {
                         console.log(team);
                     });
                 }
-                function writingEmployees (fileName, data) {
-                fs.writeFile(path.join(process.cwd(), fileName, data, (err) => {
-                    if (err) {
-                        throw err;
-                    }
-                    console.log('file written');
-                }))
-            }
+                
         }
     })
 
@@ -152,5 +145,6 @@ const generateEmployees = () => {
             Employee,
             Manager,
             Engineer,
-            Intern
+            Intern,
+            generateEmployees
         }
