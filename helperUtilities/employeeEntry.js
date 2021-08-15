@@ -109,15 +109,15 @@ const generateEmployees = () => {
 };
         inquirer.then((answers) => {
             if (answers.role === "Manager") {
-                const manager = new Manger(`${this.name} ${this.id} ${this.email} ${this.role} ${this.officeNumber}`);
+                const Manager = new Manger(`${this.name} ${this.id} ${this.email} ${this.role} ${this.officeNumber}`);
                 managerData.push(Manager);
             }
             if (answers.role === "Engineer") {
-                const engineer = new Engineer(`${this.name} ${this.id} ${this.email} ${this.role} ${this.github}`);
+                const Engineer = new Engineer(`${this.name} ${this.id} ${this.email} ${this.role} ${this.github}`);
                 engineerData.push(Engineer);
             }
             if (answers.role === "Intern") {
-                const intern = new Intern(`${this.name} ${this.id} ${this.email} ${this.role} ${this.school}`);
+                const Intern = new Intern(`${this.name} ${this.id} ${this.email} ${this.role} ${this.school}`);
                 internData.push(Intern);
             }
             {
@@ -138,7 +138,7 @@ const generateEmployees = () => {
         generateEmployees();
         console.log('working so far');
 
-        module.export = {
+        module.exports = {
             managerData,
             engineerData,
             internData,
@@ -146,5 +146,6 @@ const generateEmployees = () => {
             Manager,
             Engineer,
             Intern,
+            Team,
             generateEmployees
         }
